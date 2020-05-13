@@ -1,45 +1,102 @@
+ // Initial array of characters
+ var characters = ["Harry Potter", "Albus Dumbledore", "Lucius Malfoy", "Severus Snape"];
 
-      // Initial array of movies
-      var animals = ["dog", "cat", "fox", "bear"];
+ // displaycharacterInfo function re-renders the HTML to display the appropriate content
+ function displayPotterverseInfo() {
 
-      // Function for displaying movie data
-      function renderButtons() {
+   var character = $(this).attr("data-name");
+   var queryURL = "api.giphy.com/v1/gifs/search" + character + "?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
 
-        // Deleting the movie buttons prior to adding new movie buttons
-        // (this is necessary otherwise we will have repeat buttons)
-        $("#buttons-view").empty();
+   // Creating an AJAX call for the specific character button being clicked
+   $.ajax({
+     url: queryURL,
+     method: "GET"
+   }).then(function(response) {
 
-        // Looping through the array of movies
-        for (var i = 0; i < animals.length; i++) {
+     // Creating a div to hold the character
+     var characterDiv = $("<div class='character'>");
 
-          // Then dynamicaly generating buttons for each movie in the array.
-          // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-          var a = $("<button>");
-          // Adding a class
-          a.addClass("gif");
-          // Adding a data-attribute with a value of the movie at index i
-          a.attr("data-name", animals[i]);
-          // Providing the button's text with a value of the movie at index i
-          a.text(animals[i]);
-          // Adding the button to the HTML
-          $("#buttons-view").append(a);
-        }
-      }
+     // Storing the rating data
+     var rating = response.Rated;
 
-      // This function handles events where one button is clicked
-      $("#add-animal").on("click", function(event) {
-        // event.preventDefault() prevents the form from trying to submit itself.
-        // We're using a form so that the user can hit enter instead of clicking the button if they want
-        event.preventDefault();
+     // Creating an element to have the rating displayed
+     var pOne = $("<p>").text("Rating: " + rating);
 
-        // This line will grab the text from the input box
-        var movie = $("#animal-input").val().trim();
-        // The movie from the textbox is then added to our array
-        movies.push(movie);
+     // Displaying the rating
+     characterDiv.append(pOne);
 
-        // calling renderButtons which handles the processing of our movie array
-        renderButtons();
-      });
+     // Storing the release year
+     var released = response.Released;
 
-      // Calling the renderButtons function at least once to display the initial list of movies
-      renderButtons();
+     // Creating an element to hold the release year
+     var pTwo = $("<p>").text("Released: " + released);
+
+     // Displaying the release year
+     characterDiv.append(pTwo);
+
+     // Storing the plot
+     var plot = response.Plot;
+
+     // Creating an element to hold the plot
+     var pThree = $("<p>").text("Plot: " + plot);
+
+     // Appending the plot
+     characterDiv.append(pThree);
+
+     // Retrieving the URL for the image
+     var imgURL = response.Poster;
+
+     // Creating an element to hold the image
+     var image = $("<img>").attr("src", imgURL);
+
+     // Appending the image
+     characterDiv.append(image);
+
+     // Putting the entire character above the previous characters
+     $("#potterverse-view").prepend(characterDiv);
+   });
+
+ }
+
+ // Function for displaying character data
+ function renderButtons() {
+
+   // Deleting the characters prior to adding new characters
+   // (this is necessary otherwise you will have repeat buttons)
+   $("#buttons-view").empty();
+
+   // Looping through the array of characters
+   for (var i = 0; i < characters.length; i++) {
+
+     // Then dynamicaly generating buttons for each character in the array
+     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+     var a = $("<button>");
+     // Adding a class of character-btn to our button
+     a.addClass("character-btn");
+     // Adding a data-attribute
+     a.attr("data-name", characters[i]);
+     // Providing the initial button text
+     a.text(characters[i]);
+     // Adding the button to the buttons-view div
+     $("#buttons-view").append(a);
+   }
+ }
+
+ // This function handles events where a character button is clicked
+ $("#add-character").on("click", function(event) {
+   event.preventDefault();
+   // This line grabs the input from the textbox
+   var character = $("#character-input").val().trim();
+
+   // Adding character from the textbox to our array
+   characters.push(character);
+
+   // Calling renderButtons which handles the processing of our character array
+   renderButtons();
+ });
+
+ // Adding a click event listener to all elements with a class of "character-btn"
+ $(document).on("click", ".character-btn", displaycharacterInfo);
+
+ // Calling the renderButtons function to display the intial buttons
+ renderButtons();

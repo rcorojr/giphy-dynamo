@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Animal GIFs</title>
+  <title>Accio, Potter!</title>
   <style type="text/css">
     button,
     div,
@@ -17,23 +17,26 @@
 <body>
 
   <div class="container">
-    <h1>GIF Search</h1>
+    <h1>Potter Search</h1>
 
-    <!-- Movies will get dumped here -->
+    <!-- Rendered Buttons will get Dumped Here  -->
     <div id="buttons-view"></div>
 
-    <form id="movie-form">
-      <label for="movie-input">Accio GIF</label>
-      <input type="text" id="movie-input"><br>
+    <form id="character-form">
+      <label for="character-input">Add a Potterverse GIF!</label>
+      <input type="text" id="character-input">
+      <br>
 
       <!-- Button triggers new movie to be added -->
-      <input id="add-gif" type="submit" value="Add a GIF, ye olde fool">
+      <input id="add-character" type="submit" value="Add a Potterverse GIF!">
     </form>
+
+    <!-- Movies will Get Dumped Here -->
+    <div id="character-view"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
-    
-  </div>
+       </div>
 </body>
 
 </html>

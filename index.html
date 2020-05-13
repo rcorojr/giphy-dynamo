@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <title>Animal GIFs</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
 </head>
 
-
 <body>
-  <div class="container">
-    <h1>Movie Search</h1>
 
-    <!-- This form will be where users input data about the movies -->
+  <div class="container">
+    <h1>GIF Search</h1>
+
+    <!-- Movies will get dumped here -->
+    <div id="buttons-view"></div>
+
     <form id="movie-form">
-      <label for="movie-input">Search for a movie</label>
+      <label for="movie-input">Accio GIF</label>
       <input type="text" id="movie-input"><br>
 
-      <!-- This button will trigger our AJAX call -->
-      <input id="find-movie" type="submit" value="Movie Search">
+      <!-- Button triggers new movie to be added -->
+      <input id="add-gif" type="submit" value="Add a GIF, ye olde fool">
     </form>
 
-    <!-- We'll be dumping our JSON contents in here -->
-    <div id="movie-view"></div>
-
-    <div class="container">
-        <h1>Movie Search</h1>
-    
-        <!-- Buttons will Get Dumped Here -->
-        <div id="buttons-view"></div>
-    
-        <form id="movie-form">
-          <label for="movie-input">Add a Movie, Yo!</label>
-          <input type="text" id="movie-input"><br>
-    
-          <!-- Button triggers new movie to be added -->
-          <input id="add-movie" type="submit" value="Add a Movie, Yo!">
-        </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
     
   </div>
-
-
-    
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
+
 </html>

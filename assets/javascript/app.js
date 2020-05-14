@@ -16,32 +16,6 @@
      // Creating a div to hold the character
      var characterDiv = $("<div class='character'>");
 
-     // Storing the rating data
-     var rating = response.Rated;
-
-     // Creating an element to have the rating displayed
-     var pOne = $("<p>").text("Rating: " + rating);
-
-     // Displaying the rating
-     characterDiv.append(pOne);
-
-     // Storing the release year
-     var released = response.Released;
-
-     // Creating an element to hold the release year
-     var pTwo = $("<p>").text("Released: " + released);
-
-     // Displaying the release year
-     characterDiv.append(pTwo);
-
-     // Storing the plot
-     var plot = response.Plot;
-
-     // Creating an element to hold the plot
-     var pThree = $("<p>").text("Plot: " + plot);
-
-     // Appending the plot
-     characterDiv.append(pThree);
 
      // Retrieving the URL for the image
      var imgURL = response.Poster;
@@ -53,7 +27,7 @@
      characterDiv.append(image);
 
      // Putting the entire character above the previous characters
-     $("#potterverse-view").prepend(characterDiv);
+     $("#character-view").prepend(characterDiv);
    });
 
  }

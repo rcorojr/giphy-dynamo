@@ -5,7 +5,7 @@
  function displayPotterverseInfo() {
 
    var character = $(this).attr("data-name");
-   var queryURL = "api.giphy.com/v1/gifs/search" + character + "?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
+   var queryURL = "api.giphy.com/v1/gifs/random?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&tag=" + character;
 
    // Creating an AJAX call for the specific character button being clicked
    $.ajax({

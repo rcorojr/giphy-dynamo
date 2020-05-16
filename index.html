@@ -16,46 +16,46 @@
   <div class="container">
 
     <div class="row">
-
       <div class="col-sm, container">
         <h1>Potter Search</h1>
       </div>
+    </div>
 
-      <!-- Rendered buttons appear here  -->
-      <div class="col-sm" id="buttons-view">
-        One of three columns
-      </div>
-
-      <div class="col-sm">
-        One of three columns
+    <div class="row">
+      <div class="col-sm-12 d-flex justify-content-center">
+        <form id="character-form">
+          <label for="character-input">Add a Potterverse GIF!</label>
+          <input type="text" id="character-input">
+          <br>
+    
+          <!-- Button triggers new GIF to be added -->
+          <input id="add-character" type="submit" value="Add a Potterverse GIF!">
+        </form>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- Rendered buttons appear here  -->
+      <div class="col-sm-12 d-flex justify-content-center" style="padding: 10px" id="buttons-view">
+      </div>
+
+    </div>
+  </div>
 
     <div class="row">
       <div class="col-sm">
         One of three columns
       </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-  </div>
+    </div>
 
 
 
 
 
 
-    <form id="character-form">
-      <label for="character-input">Add a Potterverse GIF!</label>
-      <input type="text" id="character-input">
-      <br>
-
-      <!-- Button triggers new GIF to be added -->
-      <input id="add-character" type="submit" value="Add a Potterverse GIF!">
-    </form>
+   
 
     <!--GIF appear here -->
     <div id="character-view"></div>

@@ -61,7 +61,7 @@
  function renderButtons() {
 
    // Deleting the characters prior to adding new characters
-   // (this is necessary otherwise you will have repeat buttons)
+   
    $("#buttons-view").empty();
 
    // Looping through the array of characters

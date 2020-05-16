@@ -2,7 +2,7 @@
  var characters = ["Harry Potter", "Albus Dumbledore", "Lucius Malfoy", "Severus Snape"];
 
  // displaycharacterInfo function re-renders the HTML to display the appropriate content
- function displayPotterverseInfo() {
+ function displayCharacterInfo() {
 
    var character = $(this).attr("data-name");
    var queryURL = "api.giphy.com/v1/gifs/random?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&tag=" + character;
@@ -70,7 +70,7 @@
  });
 
  // Adding a click event listener to all elements with a class of "character-btn"
- $(document).on("click", ".character-btn", displaycharacterInfo);
+ $(document).on("click", ".character-btn", displayCharacterInfo);
 
  // Calling the renderButtons function to display the intial buttons
  renderButtons();

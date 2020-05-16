@@ -12,6 +12,7 @@
      url: queryURL,
      method: "GET"
    }).then(function(response) {
+    $("#character-view").html("");
      console.log(response);
      var results = response.data;
 
@@ -20,10 +21,16 @@
       var characterDiv = $("<div>");
       characterDiv.attr('class', 'character');
 
+      var rating = results[i].rating;
+      var ratingDiv = $("<div>");
+      ratingDiv.attr('class', 'rating');
+      ratingDiv.html("<p>" + rating + "</p>");
 
-     // Retrieving the URL for the image
+
+     // Retrieving the URL and rating for the image
      var stillURL = results[i].images.fixed_height_small_still.url;
      var animatedURL = results[i].images.fixed_height_small.url;
+     
 
      var newImg = $("<img>");
       newImg.attr("class", "gif");
@@ -32,19 +39,21 @@
       newImg.attr("data-animate", animatedURL);
       newImg.attr("data-state", "still");
       
+      
 
 
-     // Appending the image
+     // Appending the image and rating
+     characterDiv.append(rating);
      characterDiv.append(newImg);
 
      // Putting the entire character above the previous characters
      $("#character-view").prepend(characterDiv);
      }
+     
 
-     // Creating a div to hold the character
 
    });
-   
+
 
  }
 
@@ -90,3 +99,23 @@
 
  // Calling the renderButtons function to display the intial buttons
  renderButtons();
+
+ $( document ).ready(function() {
+
+  $(document).on('click','.gif', function(){
+
+    console.log("Registered Gif Click");
+
+    var state = $(this).attr("data-state");
+    if (state == 'still'){
+      $(this).attr("src",$(this).attr("data-animate"));
+      $(this).attr('data-state', 'animate');
+    }
+    if (state == 'animate'){
+      $(this).attr("src",$(this).attr("data-still"));
+      $(this).attr('data-state', 'still');
+    }
+});
+
+
+});

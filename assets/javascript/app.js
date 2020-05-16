@@ -5,16 +5,20 @@
  function displayCharacterInfo() {
 
    var character = $(this).attr("data-name");
-   var queryURL = "api.giphy.com/v1/gifs/random?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&tag=" + character;
+   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&q=" + character + "&limit=10";
 
    // Creating an AJAX call for the specific character button being clicked
    $.ajax({
      url: queryURL,
      method: "GET"
    }).then(function(response) {
+     console.log(response);
+     var results = response.data;
 
-     // Creating a div to hold the character
-     var characterDiv = $("<div class='character'>");
+
+     for (var i=0; i<results.length; i++) {
+      var characterDiv = $("<div>");
+      characterDiv.attr('class', 'character');
 
 
      // Retrieving the URL for the image
@@ -28,6 +32,10 @@
 
      // Putting the entire character above the previous characters
      $("#character-view").prepend(characterDiv);
+     }
+
+     // Creating a div to hold the character
+
    });
 
  }

@@ -5,7 +5,7 @@
  function displayCharacterInfo() {
 
    var character = $(this).attr("data-name");
-   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&q=" + character + "&limit=10";
+   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=cz8O9ixLJfRaCdt4Tof9PEYuxvrXx2Kz&q=" + "harry+potter+"  + character + "&limit=10";
 
    // Creating an AJAX call for the specific character button being clicked
    $.ajax({
@@ -25,11 +25,17 @@
      var stillURL = results[i].images.fixed_height_small_still.url;
      var animatedURL = results[i].images.fixed_height_small.url;
 
-     // Creating an element to hold the image
-     var image = $("<img>").attr("src", imgURL);
+     var newImg = $("<img>");
+      newImg.attr("class", "gif");
+      newImg.attr("src", stillURL);
+      newImg.attr("data-still", stillURL);
+      newImg.attr("data-animate", animatedURL);
+      newImg.attr("data-state", "still");
+      
+
 
      // Appending the image
-     characterDiv.append(image);
+     characterDiv.append(newImg);
 
      // Putting the entire character above the previous characters
      $("#character-view").prepend(characterDiv);
@@ -38,6 +44,7 @@
      // Creating a div to hold the character
 
    });
+   
 
  }
 

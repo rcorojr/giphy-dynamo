@@ -3,7 +3,8 @@ body{
     font-family: 'Playfair Display', serif;
     font-size: 14px;
     background-image: url("../images/HPHogwarts.jpg");
-    background-position: center;
+    background-position: top, center;
+    background-size: 100%;
     background-repeat: no-repeat;
 
 }

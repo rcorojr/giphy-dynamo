@@ -16,15 +16,24 @@
      console.log(response);
      var results = response.data;
 
+    console.log("length", results.length);
+
+         //resets html for view and view2
+         $("#character-view").html("");
+         $("#character-view2").html("");
 
      for (var i=0; i<results.length; i++) {
       var characterDiv = $("<div>");
       characterDiv.attr('class', 'character');
+      characterDiv.addClass("bg-light pt-3");
 
       var rating = results[i].rating;
       var ratingDiv = $("<div>");
+      
+      ratingDiv.addClass("w-100");
+
       ratingDiv.attr('class', 'rating');
-      ratingDiv.html("<p>" + rating + "</p>");
+      ratingDiv.html("<p class='text-center'>" + rating.toUpperCase() + "</p>");
 
 
      // Retrieving the URL and rating for the image
@@ -43,11 +52,19 @@
 
 
      // Appending the image and rating
-     characterDiv.append(rating);
+     characterDiv.append(ratingDiv);
      characterDiv.append(newImg);
+     
 
-     // Putting the entire character above the previous characters
-     $("#character-view").prepend(characterDiv);
+
+      if (i<5){
+         
+       // Putting the entire character above the previous characters
+       $("#character-view").prepend(characterDiv);
+      } else {
+      $("#character-view2").prepend(characterDiv);
+      }
+
      }
      
 

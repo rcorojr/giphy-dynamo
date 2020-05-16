@@ -1,9 +1,7 @@
-#buttons-view,
-    
-div,
-    
-form,
-   
-input {
-      margin: 10px;
-    }
+  
+body{
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    background-image: url("../images/HPHogwarts.jpg");
+
+}

@@ -22,7 +22,8 @@
 
 
      // Retrieving the URL for the image
-     var imgURL = response.Poster;
+     var stillURL = results[i].images.fixed_height_small_still.url;
+     var animatedURL = results[i].images.fixed_height_small.url;
 
      // Creating an element to hold the image
      var image = $("<img>").attr("src", imgURL);
